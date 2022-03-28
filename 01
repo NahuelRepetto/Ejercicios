@@ -1,0 +1,38 @@
+import java.util.Arrays;
+
+public class Ejercicio01 {
+	
+	public boolean MultiplicacionNula (final int[][] matriz)
+	{				
+		int filas = matriz.length;
+		int columnas = matriz[0].length;		
+		
+		for(int i=0;i<filas;i++){
+			for(int j=0;j<columnas;j++){
+				
+				if(matriz[i][j] == 0){					
+					return true;
+				}		
+			}
+		}
+		
+		return false;
+	}
+	
+	
+	public static void main(String[] args) {
+		int[][] entrada = {
+				{8,2,0,4},
+				{5,4,-6,20},
+				{21,1,0,40}
+		};
+		
+		Ejercicio01 miEjercicio = new Ejercicio01();
+		
+		if(miEjercicio.MultiplicacionNula(entrada)) {
+			System.out.println("La multiplicación de todos los valores de una matriz numérica dará 0");			
+		}else {
+			System.out.println("La multiplicación de todos los valores de una matriz numérica NO dará 0");	
+		}
+	}	
+}
