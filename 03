@@ -1,0 +1,57 @@
+import java.util.Arrays;
+
+public class Ejercicio03 {
+	
+	public int[] ObtenerModa (final int[][] matriz)
+	{			
+		int filas = matriz.length;
+		int columnas = matriz[0].length;
+		int[] Salida = new int[filas];
+		int[] ContadorLinea = new int[columnas];
+		int Maximo;
+		
+		for (int i = 0; i < columnas; i++) {
+			ContadorLinea[i] = 0;
+        }
+		
+		for(int i=0;i<filas;i++){	
+			for(int j=0;j<columnas;j++){
+				for(int h=j;h<columnas;h++) {
+					if(matriz[i][h] == matriz[i][j]) {
+						ContadorLinea[j]++;
+					}
+				}
+			}
+			
+			Maximo = 0;
+			for(int h=0;h<columnas;h++) {
+				if(ContadorLinea[Maximo] < ContadorLinea[h]) {
+					Maximo = h;
+				}else if(ContadorLinea[Maximo] == ContadorLinea[h]){
+					if(matriz[i][h] > matriz[i][Maximo]) {
+						Maximo = h;
+					}
+				}
+			}
+			
+			Salida[i] = matriz[i][Maximo];
+		}
+		
+		return Salida;
+	}
+	
+	
+	public static void main(String[] args) {
+		int[][] entrada = {
+				{1,2,3,4},
+				{5,-6,-6,20},
+				{1,1,10,10}
+		};
+		
+		Ejercicio03 miEjercicio = new Ejercicio03();
+		int [] salida = miEjercicio.ObtenerModa(entrada);	
+		System.out.println(Arrays.toString(salida));
+		
+	}
+		
+}
