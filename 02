@@ -1,0 +1,54 @@
+import java.util.Arrays;
+
+public class Ejercicio02 {
+	
+	public int[][] resolver (final int[][] matriz)
+	{			
+		int filas = matriz.length;
+		int columnas = matriz[0].length;
+		int[][] matrizSalida = new int[filas][columnas];
+		
+		for(int i=0;i<filas;i++){
+			for(int j=0;j<columnas;j++){
+				
+				matrizSalida[i][j] = matriz[i][j];
+				
+				if(i-1 >= 0){
+					matrizSalida[i][j] += matriz[i-1][j];
+				}
+				
+				if(i+1 < filas){
+					matrizSalida[i][j] += matriz[i+1][j];
+				}
+				
+				if(j-1 >= 0){
+					matrizSalida[i][j] += matriz[i][j-1];
+				}
+				
+				if(j+1 < columnas){
+					matrizSalida[i][j] += matriz[i][j+1];
+				}								
+			}
+		}
+		
+		return matrizSalida;
+	}
+	
+	
+	public static void main(String[] args) {
+		int[][] entrada = {
+				{8,2,-3,4},
+				{5,-6,-6,20},
+				{21,1,-5,0}
+		};
+		
+		Ejercicio02 miEjercicio = new Ejercicio02();
+		int [][] salida = miEjercicio.resolver(entrada);
+		
+		for(int i=0; i<salida.length;i++){			
+			System.out.println(Arrays.toString(salida[i]));
+		}
+		
+	}
+		
+}
